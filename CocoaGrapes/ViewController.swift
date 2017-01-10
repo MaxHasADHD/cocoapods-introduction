@@ -27,14 +27,8 @@ class ViewController: UIViewController {
         label.trailingBuffer = 10
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = true
-        label.holdScrolling = true
+        label.tapToScroll = true
         self.view.addSubview(label)
-        
-        // Tap gesture
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelWasTapped))
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        label.addGestureRecognizer(tapGesture)
         
         // Constraints
         var constraints: [NSLayoutConstraint] = []
@@ -43,19 +37,4 @@ class ViewController: UIViewController {
         constraints.append(label.bottomAnchor.constraint(equalTo: self.view.bottomAnchor))
         self.view.addConstraints(constraints)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        label.pauseLabel()
-    }
-    
-    func labelWasTapped() {
-        label.holdScrolling = false
-//        label.unpauseLabel()
-    }
 }
-
